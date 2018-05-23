@@ -8,7 +8,7 @@ This guide is to help developers setup development environment quickly.
 
 ## Steps:
 ### 1. Install msys2
-Refer to http://www.msys2.org/
+Refer to https://www.msys2.org/
 
 ### 2. Download PKGBUILD
 Depending on your intention, download one PKGBUILD from the links below and put it into a clean folder.
