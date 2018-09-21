@@ -4,7 +4,7 @@
 
 This guide is to help developers setup development environment quickly.
 
-**Warning!** the compilation will require ~10 GB of free space to compile & run qBittorrent.
+**Warning!** the compilation will require ~10 GB of free space to compile & run qBittorrent (dynamically linked).
 
 ## Steps:
 ### 1. Install msys2
@@ -46,7 +46,7 @@ Install:
 pacman -U mingw-w64-x86_64-qbittorrent-4.0.1-1-any.pkg.tar.xz
 ```
 
-Run:
+Run (in the same console):
 ```shell
 qbittorrent
 ```
