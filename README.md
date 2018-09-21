@@ -29,7 +29,7 @@ pacman --sync --refresh --sysupgrade
 
 Install development tools:
 ```shell
-pacman --sync --noconfirm autoconf automake make mingw-w64-x86_64-gcc  # note: change to mingw-w64-i686-gcc when building for 32-bit
+pacman --sync --noconfirm autoconf automake binutils make mingw-w64-x86_64-gcc  # note: change to mingw-w64-i686-gcc when building for 32-bit
 ```
 
 Start building qBittorrent:
