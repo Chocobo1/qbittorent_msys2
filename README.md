@@ -4,7 +4,7 @@
 
 This guide is to help developers setup development environment quickly.
 
-**Warning!** the compilation will require 6~7 GB of free space to compile & run qBittorrent.
+**Warning!** the compilation will require ~10 GB of free space to compile & run qBittorrent.
 
 ## Steps:
 ### 1. Install msys2
@@ -19,10 +19,20 @@ Depending on your intention, download one PKGBUILD from the links below and put 
   https://raw.githubusercontent.com/Alexpux/MINGW-packages/master/mingw-w64-qbittorrent/PKGBUILD
 
 ### 3. Install Dependencies & Build!
-If you want to build a x64 application then open `MSYS2 MinGW 64-bit.lnk` in your msys2 installation directory.<br />
-Otherwise open `MSYS2 MinGW 32-bit.lnk`.
+If you want to build a x64 application then open `MSYS2 MinGW 64-bit` in Windows start menu.<br />
+Otherwise open `MSYS2 MinGW 32-bit`.
 
-Then input the following in console:
+First make sure msys2 is up-to-date by running the following command **a few times**, until it tells you all packages are latest:
+```shell
+pacman --sync --refresh --sysupgrade
+```
+
+Install development tools:
+```shell
+pacman --sync --noconfirm autoconf automake make mingw-w64-x86_64-gcc  # note: change to mingw-w64-i686-gcc when building for 32-bit
+```
+
+Start building qBittorrent:
 ```shell
 cd <PKGBUILD_directory>
 makepkg --skippgpcheck --syncdeps --noconfirm
