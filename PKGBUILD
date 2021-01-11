@@ -31,6 +31,10 @@ prepare() {
   sed -i 's/_WIN32_WINNT=0x0601/_WIN32_WINNT=0x0602/g' "winconf.pri"
   sed -i 's/_WIN32_IE=0x0601/_WIN32_IE=0x0602/g' "winconf.pri"
   sed -i 's/unix:!macx:/unix|win32-g++:/g' "src/src.pro"
+
+  # https://github.com/msys2/MINGW-packages/blob/master/mingw-w64-qbittorrent/002-fix-iconv-linking.patch
+  echo "LIBS -= -lIconv::Iconv" >> "conf.pri.in"
+  echo "LIBS += -lIconv" >> "conf.pri.in"
 }
 
 pkgver() {
