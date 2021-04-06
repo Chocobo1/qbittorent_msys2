@@ -38,10 +38,10 @@ pacman --sync --noconfirm mingw-w64-i686-gcc
 Start building qBittorrent:
 ```shell
 cd <PKGBUILD_directory>
-# build 64-bit qBittorrent
-MINGW_INSTALLS=mingw64 makepkg-mingw --skippgpcheck --syncdeps --noconfirm
+# build 64-bit qBittorrent 
+makepkg --skippgpcheck --syncdeps --noconfirm
 # build 32-bit qBittorrent
-MINGW_INSTALLS=mingw32 makepkg-mingw --skippgpcheck --syncdeps --noconfirm
+makepkg --skippgpcheck --syncdeps --noconfirm
 ```
 
 ### 4. Install & Run
