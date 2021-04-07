@@ -7,6 +7,7 @@ pkgver=r10437.e86cef449
 pkgrel=1
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar (mingw-w64)"
 arch=('any')
+mingw_arch=('mingw32' 'mingw64' 'ucrt64')
 url="https://qbittorrent.org/"
 license=('custom' 'GPL')
 depends=("${MINGW_PACKAGE_PREFIX}-boost"

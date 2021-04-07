@@ -39,9 +39,9 @@ Start building qBittorrent:
 ```shell
 cd <PKGBUILD_directory>
 # build 64-bit qBittorrent
-MINGW_INSTALLS=mingw64 makepkg-mingw --skippgpcheck --syncdeps --noconfirm
+MINGW_ARCH=mingw64 makepkg-mingw --skippgpcheck --syncdeps --noconfirm
 # build 32-bit qBittorrent
-MINGW_INSTALLS=mingw32 makepkg-mingw --skippgpcheck --syncdeps --noconfirm
+MINGW_ARCH=mingw32 makepkg-mingw --skippgpcheck --syncdeps --noconfirm
 ```
 
 ### 4. Install & Run
