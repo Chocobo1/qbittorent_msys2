@@ -1,5 +1,7 @@
 # qbittorent_msys2
 
+[![GitHub Actions CI Status](https://github.com/Chocobo1/qbittorent_msys2/actions/workflows/ci.yaml/badge.svg)](https://github.com/Chocobo1/qbittorent_msys2/actions)
+
 ### How to Compile [qBittorrent][qbittorrent-link] in [MSYS2][msys2-link]
 
 This guide is to help developers setup development environment quickly.
@@ -30,9 +32,9 @@ pacman --sync --refresh --sysupgrade
 
 Install development tools:
 ```shell
-pacman --sync --noconfirm autoconf automake binutils make mingw-w64-x86_64-gcc
+pacman --sync --noconfirm mingw-w64-x86_64-toolchain
 # run the below command if you need to build 32-bit
-pacman --sync --noconfirm mingw-w64-i686-gcc
+pacman --sync --noconfirm mingw-w64-i686-toolchain
 ```
 
 Start building qBittorrent:
@@ -65,4 +67,4 @@ You can find the downloaded qBittorrent source code in `<PKGBUILD_directory>/src
 
 
 [qbittorrent-link]: https://github.com/qbittorrent/qBittorrent
-[msys2-link]: https://github.com/Alexpux/MINGW-packages
+[msys2-link]: https://github.com/msys2/MINGW-packages

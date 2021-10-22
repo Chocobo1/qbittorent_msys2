@@ -12,12 +12,14 @@ url="https://qbittorrent.org/"
 license=('custom' 'GPL')
 depends=("${MINGW_PACKAGE_PREFIX}-boost"
          "${MINGW_PACKAGE_PREFIX}-libtorrent-rasterbar"
-         "${MINGW_PACKAGE_PREFIX}-qt5"
+         "${MINGW_PACKAGE_PREFIX}-qt5-base"
+         "${MINGW_PACKAGE_PREFIX}-qt5-svg"
+         "${MINGW_PACKAGE_PREFIX}-qt5-winextras"
          "${MINGW_PACKAGE_PREFIX}-zlib")
 makedepends=("git"
              "${MINGW_PACKAGE_PREFIX}-cmake"
              "${MINGW_PACKAGE_PREFIX}-ninja"
-             "${MINGW_PACKAGE_PREFIX}-pkg-config")
+             "${MINGW_PACKAGE_PREFIX}-qt5-tools")
 optdepends=("${MINGW_PACKAGE_PREFIX}-python: needed for torrent search tab")
 provides=("${MINGW_PACKAGE_PREFIX}-${_realname}")
 conflicts=("${MINGW_PACKAGE_PREFIX}-${_realname}")
