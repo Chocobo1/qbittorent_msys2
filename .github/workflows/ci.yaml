@@ -29,7 +29,7 @@ jobs:
       - name: Build qBittorrent
         shell: msys2 {0}
         run: |
-          MINGW_ARCH=${{ matrix.msystem }} makepkg-mingw --skippgpcheck --syncdeps --noconfirm
+          MINGW_ARCH=${{ matrix.msystem }} makepkg-mingw --noconfirm --syncdeps
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
