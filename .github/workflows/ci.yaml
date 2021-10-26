@@ -35,6 +35,7 @@ jobs:
         shell: msys2 {0}
         run: |
           MINGW_ARCH=${{ matrix.msystem }} makepkg-mingw --noconfirm --syncdeps
+          pacman --upgrade --noconfirm mingw-w64-*
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
