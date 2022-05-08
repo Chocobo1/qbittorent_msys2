@@ -3,7 +3,7 @@
 _realname=qbittorrent
 pkgbase=mingw-w64-${_realname}-git
 pkgname=${MINGW_PACKAGE_PREFIX}-${_realname}-git
-pkgver=r11174.2d4d24626
+pkgver=r11712.648451a01
 pkgrel=1
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar (mingw-w64)"
 arch=('any')
@@ -12,14 +12,13 @@ url="https://qbittorrent.org/"
 license=('custom' 'GPL')
 depends=("${MINGW_PACKAGE_PREFIX}-boost"
          "${MINGW_PACKAGE_PREFIX}-libtorrent-rasterbar"
-         "${MINGW_PACKAGE_PREFIX}-qt5-base"
-         "${MINGW_PACKAGE_PREFIX}-qt5-svg"
-         "${MINGW_PACKAGE_PREFIX}-qt5-winextras"
+         "${MINGW_PACKAGE_PREFIX}-qt6-base"
+         "${MINGW_PACKAGE_PREFIX}-qt6-svg"
          "${MINGW_PACKAGE_PREFIX}-zlib")
 makedepends=("git"
              "${MINGW_PACKAGE_PREFIX}-cmake"
              "${MINGW_PACKAGE_PREFIX}-ninja"
-             "${MINGW_PACKAGE_PREFIX}-qt5-tools")
+             "${MINGW_PACKAGE_PREFIX}-qt6-tools")
 optdepends=("${MINGW_PACKAGE_PREFIX}-python: needed for torrent search tab")
 provides=("${MINGW_PACKAGE_PREFIX}-${_realname}")
 conflicts=("${MINGW_PACKAGE_PREFIX}-${_realname}")
@@ -33,9 +32,9 @@ prepare() {
   # prepare env for msys2-mingw
   sed \
     -i \
-    -e 's/NTDDI_VERSION=0x06010000/NTDDI_VERSION=0x06020000/g' \
-    -e 's/_WIN32_WINNT=0x0601/_WIN32_WINNT=0x0602/g' \
-    -e 's/_WIN32_IE=0x0601/_WIN32_IE=0x0602/g' \
+    -e 's/NTDDI_VERSION/#NTDDI_VERSION/g' \
+    -e 's/_WIN32_WINNT/#_WIN32_WINNT/g' \
+    -e 's/_WIN32_IE/#_WIN32_IE/g' \
     "cmake/Modules/MacroQbtCommonConfig.cmake"
 }
 
@@ -53,6 +52,7 @@ build() {
       -B "_build" \
       -DCMAKE_BUILD_TYPE=RelWithDebInfo \
       -DCMAKE_INSTALL_PREFIX="${MINGW_PREFIX}" \
+      -DQT6=ON \
       ./
   "${MINGW_PREFIX}/bin/cmake.exe" \
     --build "_build"
