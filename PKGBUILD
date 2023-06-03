@@ -3,11 +3,11 @@
 _realname=qbittorrent
 pkgbase=mingw-w64-${_realname}-git
 pkgname=${MINGW_PACKAGE_PREFIX}-${_realname}-git
-pkgver=r11712.648451a01
+pkgver=4.5.3.r271.gb1492bcd7
 pkgrel=1
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar (mingw-w64)"
 arch=('any')
-mingw_arch=('clang32' 'clang64' 'mingw32' 'mingw64' 'ucrt64')
+mingw_arch=('clang32' 'clang64' 'clangarm64' 'mingw32' 'mingw64' 'ucrt64')
 url="https://qbittorrent.org/"
 license=('custom' 'GPL')
 depends=("${MINGW_PACKAGE_PREFIX}-boost"
@@ -35,13 +35,16 @@ prepare() {
     -e 's/NTDDI_VERSION/#NTDDI_VERSION/g' \
     -e 's/_WIN32_WINNT/#_WIN32_WINNT/g' \
     -e 's/_WIN32_IE/#_WIN32_IE/g' \
-    "cmake/Modules/MacroQbtCommonConfig.cmake"
+    "cmake/Modules/CommonConfig.cmake"
 }
 
 pkgver() {
   cd "$srcdir/${_realname}"
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  _tag=$(git tag -l --sort -v:refname | grep -E '^release-[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^release-//'
 }
 
 build() {
@@ -52,6 +55,7 @@ build() {
       -B "_build" \
       -DCMAKE_BUILD_TYPE=RelWithDebInfo \
       -DCMAKE_INSTALL_PREFIX="${MINGW_PREFIX}" \
+      -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
       -DQT6=ON \
       ./
   "${MINGW_PREFIX}/bin/cmake.exe" \
