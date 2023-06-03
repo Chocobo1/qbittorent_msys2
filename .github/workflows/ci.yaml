@@ -12,10 +12,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - arch: i686
-            msystem: MINGW32
           - arch: x86_64
             msystem: MINGW64
+          - arch: ucrt-x86_64
+            msystem: UCRT64
 
     steps:
       - name: Checkout repository
@@ -30,6 +30,7 @@ jobs:
 
       - name: Setup ccache
         uses: Chocobo1/setup-ccache-action@v1
+        if: contains(matrix.arch, 'i686') || contains(matrix.arch, 'x86_64')
         with:
           windows_compile_environment: msys2
 
