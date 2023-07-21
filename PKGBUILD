@@ -3,7 +3,7 @@
 _realname=qbittorrent
 pkgbase=mingw-w64-${_realname}-git
 pkgname=${MINGW_PACKAGE_PREFIX}-${_realname}-git
-pkgver=4.5.3.r271.gb1492bcd7
+pkgver=4.5.4.r362.g0f862fcf9
 pkgrel=1
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar (mingw-w64)"
 arch=('any')
@@ -56,7 +56,6 @@ build() {
       -DCMAKE_BUILD_TYPE=RelWithDebInfo \
       -DCMAKE_INSTALL_PREFIX="${MINGW_PREFIX}" \
       -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
-      -DQT6=ON \
       ./
   "${MINGW_PREFIX}/bin/cmake.exe" \
     --build "_build"
