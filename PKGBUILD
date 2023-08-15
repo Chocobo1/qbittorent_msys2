@@ -10,12 +10,13 @@ arch=('any')
 mingw_arch=('clang32' 'clang64' 'clangarm64' 'mingw32' 'mingw64' 'ucrt64')
 url="https://qbittorrent.org/"
 license=('custom' 'GPL')
-depends=("${MINGW_PACKAGE_PREFIX}-boost"
-         "${MINGW_PACKAGE_PREFIX}-libtorrent-rasterbar"
+depends=("${MINGW_PACKAGE_PREFIX}-libtorrent-rasterbar"
+         "${MINGW_PACKAGE_PREFIX}-openssl"
          "${MINGW_PACKAGE_PREFIX}-qt6-base"
          "${MINGW_PACKAGE_PREFIX}-qt6-svg"
          "${MINGW_PACKAGE_PREFIX}-zlib")
 makedepends=("git"
+             "${MINGW_PACKAGE_PREFIX}-boost"
              "${MINGW_PACKAGE_PREFIX}-cmake"
              "${MINGW_PACKAGE_PREFIX}-ninja"
              "${MINGW_PACKAGE_PREFIX}-qt6-tools")
